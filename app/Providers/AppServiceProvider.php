@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Contracts\AIProviderInterface;
+use App\Services\AI\Providers\OpenAIProvider;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+         $this->app->bind(
+            AIProviderInterface::class,
+            OpenAIProvider::class
+        );
     }
 
     /**
